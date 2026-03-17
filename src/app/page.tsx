@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useCallback } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -35,6 +35,28 @@ import {
 
 export default function LandingPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [checkoutLoading, setCheckoutLoading] = useState(false)
+
+  const handleCheckout = useCallback(async () => {
+    setCheckoutLoading(true)
+    try {
+      const res = await fetch("/api/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          priceId: "price_1TC1mlGb2BujzFpfu0IuEWxl",
+          schoolName: "",
+          email: "",
+        }),
+      })
+      const { url } = await res.json()
+      if (url) window.location.href = url
+    } catch (err) {
+      console.error("Checkout error:", err)
+    } finally {
+      setCheckoutLoading(false)
+    }
+  }, [])
 
   return (
     <div className="min-h-screen bg-white text-zinc-900 antialiased">
@@ -441,9 +463,19 @@ export default function LandingPage() {
                   <span className="text-4xl font-bold">$899</span>
                   <span className="text-zinc-500 text-sm">/year</span>
                 </div>
-                <Button className="w-full bg-amber-400 hover:bg-amber-500 text-zinc-900 font-semibold mb-6">
-                  Register Your School
+                <Button
+                  onClick={handleCheckout}
+                  disabled={checkoutLoading}
+                  className="w-full bg-amber-400 hover:bg-amber-500 text-zinc-900 font-semibold mb-2"
+                >
+                  {checkoutLoading ? "Redirecting..." : "Get Started — $899/year"}
                 </Button>
+                <p className="text-xs text-zinc-400 text-center mb-6">
+                  Need a PO?{" "}
+                  <Link href="/payment/invoice" className="text-amber-600 hover:underline">
+                    Request an invoice instead
+                  </Link>
+                </p>
                 <ul className="space-y-3 text-sm">
                   {[
                     "Full 8-week curriculum kit",
@@ -472,9 +504,11 @@ export default function LandingPage() {
                   <span className="text-4xl font-bold">$3,999</span>
                   <span className="text-zinc-500 text-sm">/year</span>
                 </div>
-                <Button variant="outline" className="w-full font-semibold mb-6">
-                  Contact Us
-                </Button>
+                <Link href="/payment/invoice">
+                  <Button variant="outline" className="w-full font-semibold mb-6">
+                    Request Purchase Order
+                  </Button>
+                </Link>
                 <ul className="space-y-3 text-sm">
                   {[
                     "Everything in School License",
