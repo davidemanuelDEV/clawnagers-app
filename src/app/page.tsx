@@ -428,9 +428,9 @@ export default function LandingPage() {
           </div>
           <div className="grid md:grid-cols-2 gap-6 max-w-4xl">
             {/* School License */}
-            <Card className="border-2 border-amber-300 bg-white relative">
-              <div className="absolute -top-3 left-6">
-                <Badge className="bg-amber-400 text-zinc-900 hover:bg-amber-400 font-semibold">
+            <Card className="border-2 border-amber-300 bg-white relative !overflow-visible">
+              <div className="absolute -top-3 left-6 z-10">
+                <Badge className="bg-amber-400 text-zinc-900 hover:bg-amber-400 font-semibold shadow-sm">
                   Most popular
                 </Badge>
               </div>
@@ -501,7 +501,7 @@ export default function LandingPage() {
             </div>
             <div className="flex items-center gap-2">
               <Shield className="w-4 h-4 text-zinc-400" />
-              COPPA + FERPA compliant
+              FERPA compliant · Ages 14+
             </div>
             <div className="flex items-center gap-2">
               <Clock className="w-4 h-4 text-zinc-400" />
@@ -530,12 +530,12 @@ export default function LandingPage() {
             <div className="space-y-4">
               {[
                 {
-                  label: "COPPA compliant",
-                  desc: "Students log in with invite codes — no email, no PII. Data stays on school machines.",
+                  label: "No COPPA burden — ages 14+",
+                  desc: "Grades 9–12 only. COPPA applies to children under 13, so it's not a compliance concern for your school.",
                 },
                 {
                   label: "FERPA compliant",
-                  desc: "We don't touch student records. Schools manage their own data.",
+                  desc: "We don't touch student records. Students log in with invite codes — no email, no PII. Schools manage their own data.",
                 },
                 {
                   label: "Title IV-A eligible",
@@ -593,7 +593,7 @@ export default function LandingPage() {
               },
               {
                 q: "What data do you collect from students?",
-                a: "Minimal. Students log in with invite codes (CLAW-XXXX) — no email addresses, no personal information. Progress data stays within the school's dashboard. We're COPPA and FERPA compliant by design.",
+                a: "Minimal. Students log in with invite codes (CLAW-XXXX) — no email addresses, no personal information. Progress data stays within the school's dashboard. Since we target grades 9–12 (ages 14+), COPPA doesn't apply. We're FERPA compliant by design.",
               },
               {
                 q: "What's the difference between the School and District license?",
