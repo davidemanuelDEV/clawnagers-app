@@ -80,7 +80,7 @@ export default function StudentPortalPage() {
               <span>Clawnagers</span>
             </Link>
             <Link href="/login">
-              <Button variant="ghost" className="text-white/70 hover:text-white hover:bg-white/10">
+              <Button variant="ghost" className="text-white hover:text-white hover:bg-white/10">
                 Teacher Login
               </Button>
             </Link>
