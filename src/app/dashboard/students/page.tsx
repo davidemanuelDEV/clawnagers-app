@@ -68,55 +68,53 @@ export default function StudentsPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-bold text-white">Students</h1>
-          <p className="text-white/50 mt-1">{students.length} enrolled students</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-zinc-900">Students</h1>
+          <p className="text-zinc-500 mt-1">{students.length} enrolled students</p>
         </div>
         <Dialog open={dialogOpen} onOpenChange={(open) => { setDialogOpen(open); if (!open) handleCloseDialog(); }}>
-          <DialogTrigger
-            render={<Button className="bg-[#FF6B35] hover:bg-[#E55A25] text-white font-semibold" />}
-          >
-            + Add Student
+          <DialogTrigger asChild>
+            <Button className="bg-amber-400 hover:bg-amber-500 text-zinc-900 font-semibold">+ Add Student</Button>
           </DialogTrigger>
-          <DialogContent className="bg-[#1a1a2e] border-white/10 text-white">
+          <DialogContent className="bg-white border-zinc-200 text-zinc-900">
             <DialogHeader>
-              <DialogTitle className="text-white">Add New Student</DialogTitle>
-              <DialogDescription className="text-white/50">
+              <DialogTitle className="text-zinc-900">Add New Student</DialogTitle>
+              <DialogDescription className="text-zinc-500">
                 No email required — students use invite codes to access the portal
               </DialogDescription>
             </DialogHeader>
             {newInviteCode ? (
               <div className="text-center py-4">
                 <div className="text-4xl mb-4">🎉</div>
-                <p className="text-white/70 mb-2">Student added! Share this invite code:</p>
-                <div className="bg-[#0f0f23] rounded-lg p-4 mb-4">
-                  <span className="text-2xl font-mono font-bold text-[#FF6B35]">{newInviteCode}</span>
+                <p className="text-zinc-600 mb-2">Student added! Share this invite code:</p>
+                <div className="bg-zinc-50 rounded-lg p-4 mb-4 border border-zinc-200">
+                  <span className="text-2xl font-mono font-bold text-amber-600">{newInviteCode}</span>
                 </div>
-                <p className="text-white/40 text-sm mb-4">
+                <p className="text-zinc-400 text-sm mb-4">
                   The student will use this code to log in at the Student Portal
                 </p>
-                <Button onClick={handleCloseDialog} className="bg-[#FF6B35] hover:bg-[#E55A25] text-white">
+                <Button onClick={handleCloseDialog} className="bg-amber-400 hover:bg-amber-500 text-zinc-900">
                   Done
                 </Button>
               </div>
             ) : (
               <div className="space-y-4 pt-2">
                 <div className="space-y-2">
-                  <Label className="text-white/70">Display Name</Label>
+                  <Label className="text-zinc-600">Display Name</Label>
                   <Input
                     placeholder="e.g. Alex M."
                     value={newStudentName}
                     onChange={(e) => setNewStudentName(e.target.value)}
-                    className="bg-[#0f0f23] border-white/10 text-white placeholder:text-white/30"
+                    className="bg-zinc-50 border-zinc-200 text-zinc-900 placeholder:text-zinc-400"
                     onKeyDown={(e) => e.key === "Enter" && handleAddStudent()}
                   />
-                  <p className="text-white/30 text-xs">
+                  <p className="text-zinc-400 text-xs">
                     Use first name + last initial for privacy (COPPA compliant)
                   </p>
                 </div>
                 <Button
                   onClick={handleAddStudent}
                   disabled={!newStudentName.trim() || adding}
-                  className="w-full bg-[#FF6B35] hover:bg-[#E55A25] text-white"
+                  className="w-full bg-amber-400 hover:bg-amber-500 text-zinc-900"
                 >
                   {adding ? "Creating..." : "Generate Invite Code"}
                 </Button>
@@ -132,22 +130,22 @@ export default function StudentsPage() {
           placeholder="Search by name, agent, or invite code..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="bg-[#1a1a2e] border-white/10 text-white placeholder:text-white/30 max-w-md"
+          className="bg-white border-zinc-200 text-zinc-900 placeholder:text-zinc-400 max-w-md"
         />
       </div>
 
       {/* Desktop Table */}
-      <Card className="bg-[#1a1a2e] border-white/10 hidden md:block">
+      <Card className="bg-white border border-zinc-200 hidden md:block">
         <CardContent className="p-0">
           <Table>
             <TableHeader>
-              <TableRow className="border-white/10 hover:bg-transparent">
-                <TableHead className="text-white/40">Student</TableHead>
-                <TableHead className="text-white/40">Agent</TableHead>
-                <TableHead className="text-white/40">Invite Code</TableHead>
-                <TableHead className="text-white/40">Progress</TableHead>
-                <TableHead className="text-white/40">Status</TableHead>
-                <TableHead className="text-white/40"></TableHead>
+              <TableRow className="border-zinc-200 hover:bg-transparent">
+                <TableHead className="text-zinc-400">Student</TableHead>
+                <TableHead className="text-zinc-400">Agent</TableHead>
+                <TableHead className="text-zinc-400">Invite Code</TableHead>
+                <TableHead className="text-zinc-400">Progress</TableHead>
+                <TableHead className="text-zinc-400">Status</TableHead>
+                <TableHead className="text-zinc-400"></TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -157,45 +155,45 @@ export default function StudentsPage() {
                 const progressPercent = Math.round((completed / 8) * 100)
                 const status = completed === 0 ? "Not Started" : completed >= 4 ? "On Track" : "Needs Attention"
                 return (
-                  <TableRow key={student.id} className="border-white/5 hover:bg-white/5">
+                  <TableRow key={student.id} className="border-zinc-100 hover:bg-zinc-50">
                     <TableCell>
                       <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-full bg-[#25254a] flex items-center justify-center text-white text-sm font-bold">
+                        <div className="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center text-zinc-900 text-sm font-bold">
                           {student.display_name[0]}
                         </div>
-                        <span className="text-white font-medium">{student.display_name}</span>
+                        <span className="text-zinc-900 font-medium">{student.display_name}</span>
                       </div>
                     </TableCell>
                     <TableCell>
                       {student.agent_name ? (
-                        <span className="text-white/70">{student.agent_name}</span>
+                        <span className="text-zinc-600">{student.agent_name}</span>
                       ) : (
-                        <span className="text-white/30 italic">Not named yet</span>
+                        <span className="text-zinc-300 italic">Not named yet</span>
                       )}
                     </TableCell>
                     <TableCell>
-                      <code className="text-xs font-mono text-[#FF6B35] bg-[#FF6B35]/10 px-2 py-1 rounded">
+                      <code className="text-xs font-mono text-amber-600 bg-amber-50 px-2 py-1 rounded">
                         {student.invite_code}
                       </code>
                     </TableCell>
                     <TableCell>
                       <div className="flex items-center gap-2 min-w-[120px]">
-                        <Progress value={progressPercent} className="h-1.5 bg-white/10 flex-1 [&>div]:bg-[#FF6B35]" />
-                        <span className="text-xs text-white/40 w-8">{completed}/8</span>
+                        <Progress value={progressPercent} className="h-1.5 bg-zinc-100 flex-1 [&>div]:bg-amber-400" />
+                        <span className="text-xs text-zinc-400 w-8">{completed}/8</span>
                       </div>
                     </TableCell>
                     <TableCell>
                       <Badge className={`border-none text-xs ${
-                        status === "On Track" ? "bg-green-500/10 text-green-400" :
-                        status === "Not Started" ? "bg-white/5 text-white/30" :
-                        "bg-yellow-500/10 text-yellow-400"
+                        status === "On Track" ? "bg-green-50 text-green-600" :
+                        status === "Not Started" ? "bg-zinc-50 text-zinc-400" :
+                        "bg-yellow-50 text-yellow-600"
                       }`}>
                         {status}
                       </Badge>
                     </TableCell>
                     <TableCell>
                       <Link href={`/dashboard/students/${student.id}`}>
-                        <Button variant="ghost" size="sm" className="text-white/40 hover:text-white hover:bg-white/10">
+                        <Button variant="ghost" size="sm" className="text-zinc-400 hover:text-zinc-900 hover:bg-zinc-50">
                           View →
                         </Button>
                       </Link>
@@ -216,25 +214,25 @@ export default function StudentsPage() {
           const progressPercent = Math.round((completed / 8) * 100)
           return (
             <Link key={student.id} href={`/dashboard/students/${student.id}`}>
-              <Card className="bg-[#1a1a2e] border-white/10 hover:border-[#FF6B35]/20 transition-colors cursor-pointer">
+              <Card className="bg-white border border-zinc-200 hover:border-amber-300 transition-colors cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-full bg-[#25254a] flex items-center justify-center text-white font-bold">
+                      <div className="w-9 h-9 rounded-full bg-amber-100 flex items-center justify-center text-zinc-900 font-bold">
                         {student.display_name[0]}
                       </div>
                       <div>
-                        <div className="text-white font-medium">{student.display_name}</div>
-                        <div className="text-xs text-white/40">
+                        <div className="text-zinc-900 font-medium">{student.display_name}</div>
+                        <div className="text-xs text-zinc-400">
                           {student.agent_name || "No agent yet"}
                         </div>
                       </div>
                     </div>
-                    <code className="text-xs font-mono text-[#FF6B35]">{student.invite_code}</code>
+                    <code className="text-xs font-mono text-amber-600">{student.invite_code}</code>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Progress value={progressPercent} className="h-1.5 bg-white/10 flex-1 [&>div]:bg-[#FF6B35]" />
-                    <span className="text-xs text-white/40">{completed}/8</span>
+                    <Progress value={progressPercent} className="h-1.5 bg-zinc-100 flex-1 [&>div]:bg-amber-400" />
+                    <span className="text-xs text-zinc-400">{completed}/8</span>
                   </div>
                 </CardContent>
               </Card>
@@ -246,7 +244,7 @@ export default function StudentsPage() {
       {filteredStudents.length === 0 && (
         <div className="text-center py-12">
           <span className="text-4xl block mb-4">🔍</span>
-          <p className="text-white/40">
+          <p className="text-zinc-400">
             {students.length === 0
               ? "No students yet. Click \"+ Add Student\" to get started."
               : `No students found matching "${search}"`}

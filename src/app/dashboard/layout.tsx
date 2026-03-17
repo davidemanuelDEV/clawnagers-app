@@ -47,10 +47,10 @@ export default function DashboardLayout({
 
   if (dashboardData.loading) {
     return (
-      <div className="min-h-screen bg-[#0f0f23] flex items-center justify-center">
+      <div className="min-h-screen bg-zinc-50 flex items-center justify-center">
         <div className="text-center">
           <span className="text-4xl block mb-4 animate-pulse">🦞</span>
-          <p className="text-white/50">Loading dashboard...</p>
+          <p className="text-zinc-500">Loading dashboard...</p>
         </div>
       </div>
     )
@@ -58,12 +58,12 @@ export default function DashboardLayout({
 
   if (dashboardData.error || !dashboardData.data) {
     return (
-      <div className="min-h-screen bg-[#0f0f23] flex items-center justify-center">
+      <div className="min-h-screen bg-zinc-50 flex items-center justify-center">
         <div className="text-center">
           <span className="text-4xl block mb-4">⚠️</span>
-          <p className="text-white/70 mb-2">Unable to load dashboard</p>
-          <p className="text-white/40 text-sm mb-4">{dashboardData.error || "No school data found"}</p>
-          <Button onClick={handleSignOut} variant="ghost" className="text-white/40 hover:text-white">
+          <p className="text-zinc-600 mb-2">Unable to load dashboard</p>
+          <p className="text-zinc-400 text-sm mb-4">{dashboardData.error || "No school data found"}</p>
+          <Button onClick={handleSignOut} variant="ghost" className="text-zinc-400 hover:text-zinc-900">
             Sign Out
           </Button>
         </div>
@@ -75,27 +75,27 @@ export default function DashboardLayout({
 
   return (
     <DashboardContext.Provider value={dashboardData}>
-      <div className="min-h-screen bg-[#0f0f23]">
+      <div className="min-h-screen bg-zinc-50">
         {/* Top Nav */}
-        <nav className="border-b border-white/10 bg-[#1a1a2e]/80 backdrop-blur-sm sticky top-0 z-50">
+        <nav className="border-b border-zinc-200 bg-white/80 backdrop-blur-sm sticky top-0 z-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
-            <Link href="/dashboard" className="text-xl font-bold text-white flex items-center gap-2">
+            <Link href="/dashboard" className="text-xl font-bold text-zinc-900 flex items-center gap-2">
               <span className="text-2xl">🦞</span>
               <span className="hidden sm:inline">Clawnagers</span>
             </Link>
             <div className="flex items-center gap-2 sm:gap-4">
               <div className="text-right hidden sm:block">
-                <div className="text-sm text-white font-medium">{teacher.name}</div>
-                <div className="text-xs text-white/40">{school.name}</div>
+                <div className="text-sm text-zinc-900 font-medium">{teacher.name}</div>
+                <div className="text-xs text-zinc-400">{school.name}</div>
               </div>
-              <div className="w-9 h-9 rounded-full bg-[#FF6B35] flex items-center justify-center text-white font-bold text-sm">
+              <div className="w-9 h-9 rounded-full bg-amber-400 flex items-center justify-center text-zinc-900 font-bold text-sm">
                 {teacher.name.split(' ').map(n => n[0]).join('')}
               </div>
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={handleSignOut}
-                className="text-white/40 hover:text-white hover:bg-white/10"
+                className="text-zinc-400 hover:text-zinc-900 hover:bg-zinc-50"
               >
                 Sign Out
               </Button>
@@ -105,7 +105,7 @@ export default function DashboardLayout({
 
         <div className="max-w-7xl mx-auto flex">
           {/* Sidebar */}
-          <aside className="w-56 shrink-0 border-r border-white/10 min-h-[calc(100vh-57px)] p-4 hidden md:block">
+          <aside className="w-56 shrink-0 border-r border-zinc-200 min-h-[calc(100vh-57px)] p-4 hidden md:block bg-white">
             <nav className="space-y-1">
               {navItems.map((item) => {
                 const isActive = pathname === item.href ||
@@ -115,8 +115,8 @@ export default function DashboardLayout({
                     <div
                       className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                         isActive
-                          ? "bg-[#FF6B35]/10 text-[#FF6B35]"
-                          : "text-white/50 hover:text-white hover:bg-white/5"
+                          ? "bg-amber-50 text-amber-600"
+                          : "text-zinc-500 hover:text-zinc-900 hover:bg-zinc-50"
                       }`}
                     >
                       <span className="text-lg">{item.icon}</span>
@@ -126,21 +126,21 @@ export default function DashboardLayout({
                 )
               })}
             </nav>
-            <div className="mt-8 p-3 rounded-lg bg-[#1a1a2e] border border-white/5">
-              <div className="text-xs text-white/30 mb-1">SCHOOL</div>
-              <div className="text-sm text-white font-medium">{school.name}</div>
-              <div className="text-xs text-white/40 mt-0.5">
+            <div className="mt-8 p-3 rounded-lg bg-zinc-50 border border-zinc-200">
+              <div className="text-xs text-zinc-400 mb-1">SCHOOL</div>
+              <div className="text-sm text-zinc-900 font-medium">{school.name}</div>
+              <div className="text-xs text-zinc-500 mt-0.5">
                 {school.district ? `${school.district}, ` : ''}{school.state}
               </div>
-              <div className="text-xs text-white/30 mt-2">LICENSE</div>
-              <div className="text-xs text-[#FF6B35]">
+              <div className="text-xs text-zinc-400 mt-2">LICENSE</div>
+              <div className="text-xs text-amber-600">
                 {school.license_end ? `Active until ${school.license_end}` : 'Active'}
               </div>
             </div>
           </aside>
 
           {/* Mobile Nav */}
-          <div className="md:hidden fixed bottom-0 left-0 right-0 border-t border-white/10 bg-[#1a1a2e]/95 backdrop-blur-sm z-50">
+          <div className="md:hidden fixed bottom-0 left-0 right-0 border-t border-zinc-200 bg-white/95 backdrop-blur-sm z-50">
             <div className="flex items-center justify-around py-2">
               {navItems.map((item) => {
                 const isActive = pathname === item.href ||
@@ -148,7 +148,7 @@ export default function DashboardLayout({
                 return (
                   <Link key={item.href} href={item.href}>
                     <div className={`flex flex-col items-center gap-1 px-3 py-1 ${
-                      isActive ? "text-[#FF6B35]" : "text-white/40"
+                      isActive ? "text-amber-600" : "text-zinc-400"
                     }`}>
                       <span className="text-xl">{item.icon}</span>
                       <span className="text-[10px] font-medium">{item.label}</span>

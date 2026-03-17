@@ -9,32 +9,41 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { createClient } from "@/lib/supabase"
 
-export default function LoginPage() {
+export default function ResetPasswordPage() {
   const router = useRouter()
-  const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [confirmPassword, setConfirmPassword] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setIsLoading(true)
     setError(null)
 
+    if (password !== confirmPassword) {
+      setError("Passwords do not match")
+      return
+    }
+
+    if (password.length < 6) {
+      setError("Password must be at least 6 characters")
+      return
+    }
+
+    setIsLoading(true)
+
     const supabase = createClient()
-    const { error: authError } = await supabase.auth.signInWithPassword({
-      email,
+    const { error: updateError } = await supabase.auth.updateUser({
       password,
     })
 
-    if (authError) {
-      setError(authError.message)
+    if (updateError) {
+      setError(updateError.message)
       setIsLoading(false)
       return
     }
 
-    router.push("/dashboard")
-    router.refresh()
+    router.push("/login")
   }
 
   return (
@@ -46,21 +55,16 @@ export default function LoginPage() {
             <span className="text-3xl">🦞</span>
             <span>Clawnagers</span>
           </Link>
-          <Link href="/register">
-            <Button className="bg-amber-400 hover:bg-amber-500 text-zinc-900 font-semibold">
-              Register
-            </Button>
-          </Link>
         </div>
       </nav>
 
       <div className="flex items-center justify-center p-4 py-24">
         <Card className="max-w-md w-full bg-white border border-zinc-200">
           <CardHeader className="text-center pb-2">
-            <span className="text-4xl block mb-2">🦞</span>
-            <CardTitle className="text-2xl font-bold text-zinc-900">Welcome Back</CardTitle>
+            <span className="text-4xl block mb-2">🔐</span>
+            <CardTitle className="text-2xl font-bold text-zinc-900">Set New Password</CardTitle>
             <CardDescription className="text-zinc-500">
-              Log in to your Clawnagers dashboard
+              Enter your new password below
             </CardDescription>
           </CardHeader>
           <CardContent className="p-8 pt-4">
@@ -71,24 +75,7 @@ export default function LoginPage() {
                 </div>
               )}
               <div className="space-y-2">
-                <Label htmlFor="email" className="text-zinc-600">Email</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="schen@lincolnhs.edu"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="bg-zinc-50 border-zinc-200 text-zinc-900 placeholder:text-zinc-400 focus:border-amber-400"
-                />
-              </div>
-              <div className="space-y-2">
-                <div className="flex items-center justify-between">
-                  <Label htmlFor="password" className="text-zinc-600">Password</Label>
-                  <Link href="/forgot-password" className="text-amber-600 text-sm hover:underline">
-                    Forgot password?
-                  </Link>
-                </div>
+                <Label htmlFor="password" className="text-zinc-600">New Password</Label>
                 <Input
                   id="password"
                   type="password"
@@ -99,19 +86,25 @@ export default function LoginPage() {
                   className="bg-zinc-50 border-zinc-200 text-zinc-900 placeholder:text-zinc-400 focus:border-amber-400"
                 />
               </div>
+              <div className="space-y-2">
+                <Label htmlFor="confirmPassword" className="text-zinc-600">Confirm Password</Label>
+                <Input
+                  id="confirmPassword"
+                  type="password"
+                  placeholder="••••••••"
+                  required
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  className="bg-zinc-50 border-zinc-200 text-zinc-900 placeholder:text-zinc-400 focus:border-amber-400"
+                />
+              </div>
               <Button
                 type="submit"
                 disabled={isLoading}
                 className="w-full bg-amber-400 hover:bg-amber-500 text-zinc-900 font-semibold"
               >
-                {isLoading ? "Signing In..." : "Sign In"}
+                {isLoading ? "Updating..." : "Update Password"}
               </Button>
-              <p className="text-center text-zinc-400 text-sm mt-4">
-                Don&apos;t have an account?{" "}
-                <Link href="/register" className="text-amber-600 hover:underline">
-                  Register your school
-                </Link>
-              </p>
             </form>
           </CardContent>
         </Card>

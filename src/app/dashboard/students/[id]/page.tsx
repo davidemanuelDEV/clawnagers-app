@@ -42,10 +42,10 @@ export default function StudentDetailPage({ params }: { params: Promise<{ id: st
     return (
       <div className="text-center py-16">
         <span className="text-6xl block mb-4">🦞</span>
-        <h2 className="text-xl font-bold text-white mb-2">Student Not Found</h2>
-        <p className="text-white/50 mb-4">This student doesn&apos;t exist or has been removed.</p>
+        <h2 className="text-xl font-bold text-zinc-900 mb-2">Student Not Found</h2>
+        <p className="text-zinc-500 mb-4">This student doesn&apos;t exist or has been removed.</p>
         <Link href="/dashboard/students">
-          <Button className="bg-[#FF6B35] hover:bg-[#E55A25] text-white">
+          <Button className="bg-amber-400 hover:bg-amber-500 text-zinc-900">
             ← Back to Students
           </Button>
         </Link>
@@ -72,26 +72,26 @@ export default function StudentDetailPage({ params }: { params: Promise<{ id: st
   return (
     <div>
       {/* Breadcrumb */}
-      <div className="flex items-center gap-2 text-sm text-white/40 mb-6">
-        <Link href="/dashboard/students" className="hover:text-white/60">Students</Link>
+      <div className="flex items-center gap-2 text-sm text-zinc-400 mb-6">
+        <Link href="/dashboard/students" className="hover:text-zinc-600">Students</Link>
         <span>/</span>
-        <span className="text-white/70">{student.display_name}</span>
+        <span className="text-zinc-600">{student.display_name}</span>
       </div>
 
       {/* Student Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
         <div className="flex items-center gap-4">
-          <div className="w-14 h-14 rounded-full bg-[#25254a] flex items-center justify-center text-white text-2xl font-bold">
+          <div className="w-14 h-14 rounded-full bg-amber-100 flex items-center justify-center text-zinc-900 text-2xl font-bold">
             {student.display_name[0]}
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-white">{student.display_name}</h1>
+            <h1 className="text-2xl font-bold text-zinc-900">{student.display_name}</h1>
             <div className="flex items-center gap-3 mt-1">
-              <code className="text-xs font-mono text-[#FF6B35] bg-[#FF6B35]/10 px-2 py-1 rounded">
+              <code className="text-xs font-mono text-amber-600 bg-amber-50 px-2 py-1 rounded">
                 {student.invite_code}
               </code>
               {student.agent_name && (
-                <Badge className="bg-[#FF6B35]/10 text-[#FF6B35] border-none">
+                <Badge className="bg-amber-50 text-amber-600 border-none">
                   🤖 {student.agent_name}
                 </Badge>
               )}
@@ -100,19 +100,19 @@ export default function StudentDetailPage({ params }: { params: Promise<{ id: st
         </div>
         <div className="flex items-center gap-2">
           <div className="text-right mr-4">
-            <div className="text-2xl font-bold text-white">{progressPercent}%</div>
-            <div className="text-xs text-white/40">{completedWeeks}/8 weeks</div>
+            <div className="text-2xl font-bold text-zinc-900">{progressPercent}%</div>
+            <div className="text-xs text-zinc-400">{completedWeeks}/8 weeks</div>
           </div>
           <div className="w-24">
-            <Progress value={progressPercent} className="h-2.5 bg-white/10 [&>div]:bg-[#FF6B35]" />
+            <Progress value={progressPercent} className="h-2.5 bg-zinc-100 [&>div]:bg-amber-400" />
           </div>
         </div>
       </div>
 
       {/* Week-by-Week Progress */}
-      <Card className="bg-[#1a1a2e] border-white/10">
+      <Card className="bg-white border border-zinc-200">
         <CardHeader>
-          <CardTitle className="text-lg text-white">Week-by-Week Progress</CardTitle>
+          <CardTitle className="text-lg text-zinc-900">Week-by-Week Progress</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-1">
@@ -122,12 +122,12 @@ export default function StudentDetailPage({ params }: { params: Promise<{ id: st
 
               return (
                 <div key={week.week}>
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-3 p-4 rounded-lg hover:bg-white/5 transition-colors">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-3 p-4 rounded-lg hover:bg-zinc-50 transition-colors">
                     {/* Week Indicator */}
                     <div className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shrink-0 ${
-                      status === 'completed' ? 'bg-green-500/20 text-green-400' :
-                      status === 'in_progress' ? 'bg-[#FF6B35]/20 text-[#FF6B35]' :
-                      'bg-white/5 text-white/30'
+                      status === 'completed' ? 'bg-green-100 text-green-600' :
+                      status === 'in_progress' ? 'bg-amber-100 text-amber-600' :
+                      'bg-zinc-100 text-zinc-400'
                     }`}>
                       {status === 'completed' ? '✓' : week.week}
                     </div>
@@ -136,36 +136,36 @@ export default function StudentDetailPage({ params }: { params: Promise<{ id: st
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2">
                         <span className={`font-medium ${
-                          status === 'completed' ? 'text-white/60' :
-                          status === 'in_progress' ? 'text-white' :
-                          'text-white/30'
+                          status === 'completed' ? 'text-zinc-500' :
+                          status === 'in_progress' ? 'text-zinc-900' :
+                          'text-zinc-400'
                         }`}>
                           Week {week.week}: {week.title}
                         </span>
                         <Badge className={`text-xs border-none ${
-                          status === 'completed' ? 'bg-green-500/10 text-green-400' :
-                          status === 'in_progress' ? 'bg-[#FF6B35]/10 text-[#FF6B35]' :
-                          'bg-white/5 text-white/20'
+                          status === 'completed' ? 'bg-green-50 text-green-600' :
+                          status === 'in_progress' ? 'bg-amber-50 text-amber-600' :
+                          'bg-zinc-50 text-zinc-300'
                         }`}>
                           {status === 'completed' ? 'Completed' :
                            status === 'in_progress' ? 'In Progress' :
                            'Not Started'}
                         </Badge>
                       </div>
-                      <p className="text-xs text-white/30 mt-1 line-clamp-1">{week.description}</p>
+                      <p className="text-xs text-zinc-400 mt-1 line-clamp-1">{week.description}</p>
                     </div>
 
                     {/* Actions */}
                     <div className="flex items-center gap-2 shrink-0">
                       {saving === week.week && (
-                        <span className="text-xs text-white/30">Saving...</span>
+                        <span className="text-xs text-zinc-300">Saving...</span>
                       )}
                       {status !== 'completed' && status !== 'in_progress' && saving !== week.week && (
                         <Button
                           variant="ghost"
                           size="sm"
                           onClick={() => handleMarkInProgress(week.week)}
-                          className="text-white/40 hover:text-white hover:bg-white/10 text-xs"
+                          className="text-zinc-400 hover:text-zinc-900 hover:bg-zinc-50 text-xs"
                         >
                           Start
                         </Button>
@@ -174,7 +174,7 @@ export default function StudentDetailPage({ params }: { params: Promise<{ id: st
                         <Button
                           size="sm"
                           onClick={() => handleMarkComplete(week.week)}
-                          className="bg-green-500/10 text-green-400 hover:bg-green-500/20 text-xs"
+                          className="bg-green-50 text-green-600 hover:bg-green-100 text-xs"
                         >
                           ✓ Complete
                         </Button>
@@ -188,11 +188,11 @@ export default function StudentDetailPage({ params }: { params: Promise<{ id: st
                       placeholder="Add teacher notes..."
                       value={noteValue}
                       onChange={(e) => setNotes({ ...notes, [week.week]: e.target.value })}
-                      className="bg-transparent border-white/5 text-white/60 placeholder:text-white/20 text-xs h-8 focus:border-[#FF6B35]/30"
+                      className="bg-transparent border-zinc-100 text-zinc-600 placeholder:text-zinc-300 text-xs h-8 focus:border-amber-300"
                     />
                   </div>
 
-                  {week.week < 8 && <Separator className="bg-white/5" />}
+                  {week.week < 8 && <Separator className="bg-zinc-100" />}
                 </div>
               )
             })}
@@ -201,27 +201,27 @@ export default function StudentDetailPage({ params }: { params: Promise<{ id: st
       </Card>
 
       {/* Student Info */}
-      <Card className="bg-[#1a1a2e] border-white/10 mt-6">
+      <Card className="bg-white border border-zinc-200 mt-6">
         <CardHeader>
-          <CardTitle className="text-lg text-white">Student Info</CardTitle>
+          <CardTitle className="text-lg text-zinc-900">Student Info</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid sm:grid-cols-2 gap-4 text-sm">
             <div>
-              <div className="text-white/40">Display Name</div>
-              <div className="text-white mt-0.5">{student.display_name}</div>
+              <div className="text-zinc-400">Display Name</div>
+              <div className="text-zinc-900 mt-0.5">{student.display_name}</div>
             </div>
             <div>
-              <div className="text-white/40">Invite Code</div>
-              <code className="text-[#FF6B35] font-mono mt-0.5 block">{student.invite_code}</code>
+              <div className="text-zinc-400">Invite Code</div>
+              <code className="text-amber-600 font-mono mt-0.5 block">{student.invite_code}</code>
             </div>
             <div>
-              <div className="text-white/40">Agent Name</div>
-              <div className="text-white mt-0.5">{student.agent_name || "Not named yet"}</div>
+              <div className="text-zinc-400">Agent Name</div>
+              <div className="text-zinc-900 mt-0.5">{student.agent_name || "Not named yet"}</div>
             </div>
             <div>
-              <div className="text-white/40">Enrolled</div>
-              <div className="text-white mt-0.5">{new Date(student.created_at).toLocaleDateString()}</div>
+              <div className="text-zinc-400">Enrolled</div>
+              <div className="text-zinc-900 mt-0.5">{new Date(student.created_at).toLocaleDateString()}</div>
             </div>
           </div>
         </CardContent>
