@@ -1,3 +1,6 @@
+"use client"
+
+import { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -18,13 +21,82 @@ import {
   ExternalLink
 } from "lucide-react"
 
-export const metadata = {
-  title: "Technical Setup Guide | Clawnagers",
-  description: "Complete classroom infrastructure guide for AI agent development. Free cloud GPU access, hardware requirements, and education partnerships.",
-  keywords: "Clawnagers setup, OpenClaw classroom, NVIDIA education, cloud GPU, K-12 AI curriculum"
-}
+// Metadata is handled by Next.js head management for client components
 
 export default function SetupGuidePage() {
+  const [selectedRecommendation, setSelectedRecommendation] = useState<string | null>(null)
+
+  const showClassroomRecommendation = (size: string) => {
+    setSelectedRecommendation(size)
+  }
+
+  const recommendations = {
+    small: {
+      title: "🏫 Small Classroom Setup",
+      students: "1-15 students",
+      recommendation: "Chromebook-friendly cloud setup",
+      cost: "$0-50/month",
+      infrastructure: [
+        "Google Colab (free tier sufficient)",
+        "GitHub Education accounts for all students", 
+        "Shared API keys managed by teacher",
+        "Basic network requirements (20 Mbps)"
+      ],
+      partnerships: ["GitHub Education", "Google for Education"],
+      timeline: "1-2 weeks setup",
+      pros: ["Minimal cost", "Easy management", "Works on any device"],
+      nextStep: "Start with GitHub Education Pack"
+    },
+    medium: {
+      title: "🎓 Standard Classroom Setup", 
+      students: "16-30 students",
+      recommendation: "Mixed cloud + local resources",
+      cost: "$150-300/month",
+      infrastructure: [
+        "Apply for NVIDIA Education (free GPU access)",
+        "Google Colab Pro for advanced projects",
+        "AWS Education credits for production",
+        "Dedicated classroom network (50+ Mbps)"
+      ],
+      partnerships: ["NVIDIA Education", "AWS Educate", "Google"],
+      timeline: "3-4 weeks setup (includes approvals)",
+      pros: ["Professional tools", "Scalable", "Free GPU access"],
+      nextStep: "Apply for NVIDIA Education Program"
+    },
+    large: {
+      title: "🏢 Multi-Class Setup",
+      students: "31-100 students", 
+      recommendation: "Institutional cloud infrastructure",
+      cost: "$500-1000/month",
+      infrastructure: [
+        "Dedicated cloud instances (AWS/DigitalOcean)",
+        "Local AI models for cost efficiency",
+        "Student management dashboard",
+        "High-bandwidth network (100+ Mbps)"
+      ],
+      partnerships: ["All education programs", "Institutional discounts"],
+      timeline: "6-8 weeks (includes IT approval)",
+      pros: ["Full control", "Cost efficient at scale", "Advanced features"],
+      nextStep: "Contact education team for consultation"
+    },
+    district: {
+      title: "🌟 District-Wide Deployment",
+      students: "100+ students",
+      recommendation: "Enterprise infrastructure with local deployment", 
+      cost: "Custom pricing",
+      infrastructure: [
+        "On-premise GPU clusters or cloud hybrid",
+        "District-wide student management",
+        "Professional development for teachers",
+        "Dedicated support and training"
+      ],
+      partnerships: ["Enterprise partnerships", "Volume discounts"],
+      timeline: "3-6 months (full implementation)",
+      pros: ["Maximum control", "Best per-student cost", "Full support"],
+      nextStep: "Schedule enterprise consultation"
+    }
+  }
+
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
@@ -51,32 +123,96 @@ export default function SetupGuidePage() {
           </p>
         </div>
 
-        {/* Quick Navigation */}
+        {/* Setup Wizard */}
         <div className="bg-amber-50 border border-amber-200 rounded-lg p-6 mb-12">
           <h2 className="font-semibold mb-4 flex items-center gap-2">
             <GraduationCap className="w-5 h-5 text-amber-600" />
-            Quick Start Options
+            Find Your Perfect Classroom Setup
           </h2>
-          <div className="grid md:grid-cols-2 gap-4 text-sm">
+          <p className="text-sm text-zinc-600 mb-6">
+            Answer a few questions about your classroom to get a personalized infrastructure recommendation.
+          </p>
+          
+          <div className="space-y-4">
             <div>
-              <h3 className="font-medium mb-2">Free Tier (Budget: $0)</h3>
-              <ul className="space-y-1 text-zinc-600">
-                <li>• NVIDIA for Education (free GPU access)</li>
-                <li>• Google Colab (12 hours/day free)</li>
-                <li>• AWS Education ($200 credits)</li>
-                <li>• GitHub Codespaces (60 hours/month)</li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-medium mb-2">Professional ($200-500/month)</h3>
-              <ul className="space-y-1 text-zinc-600">
-                <li>• Cloud GPU instances</li>
-                <li>• Local AI models</li>
-                <li>• Multi-user management</li>
-                <li>• Production deployments</li>
-              </ul>
+              <h3 className="font-medium mb-3">📊 How many students in your class?</h3>
+              <div className="grid md:grid-cols-4 gap-2">
+                <button 
+                  onClick={() => showClassroomRecommendation('small')} 
+                  className="p-3 text-left bg-white border border-zinc-200 rounded-lg hover:border-amber-300 transition-colors"
+                >
+                  <div className="font-medium">1-15 students</div>
+                  <div className="text-sm text-zinc-500">Single classroom</div>
+                </button>
+                <button 
+                  onClick={() => showClassroomRecommendation('medium')} 
+                  className="p-3 text-left bg-white border border-zinc-200 rounded-lg hover:border-amber-300 transition-colors"
+                >
+                  <div className="font-medium">16-30 students</div>
+                  <div className="text-sm text-zinc-500">Standard class size</div>
+                </button>
+                <button 
+                  onClick={() => showClassroomRecommendation('large')} 
+                  className="p-3 text-left bg-white border border-zinc-200 rounded-lg hover:border-amber-300 transition-colors"
+                >
+                  <div className="font-medium">31-100 students</div>
+                  <div className="text-sm text-zinc-500">Multiple classes</div>
+                </button>
+                <button 
+                  onClick={() => showClassroomRecommendation('district')} 
+                  className="p-3 text-left bg-white border border-zinc-200 rounded-lg hover:border-amber-300 transition-colors"
+                >
+                  <div className="font-medium">100+ students</div>
+                  <div className="text-sm text-zinc-500">School/district wide</div>
+                </button>
+              </div>
             </div>
           </div>
+
+          {selectedRecommendation && (
+            <div className="mt-6 p-4 bg-white border-2 border-amber-300 rounded-lg">
+              {(() => {
+                const rec = recommendations[selectedRecommendation as keyof typeof recommendations]
+                return (
+                  <>
+                    <h4 className="font-semibold text-amber-800 mb-4">{rec.title}</h4>
+                    <div className="grid md:grid-cols-3 gap-4 mb-6">
+                      <div>
+                        <h5 className="font-medium mb-2">Recommended Setup</h5>
+                        <p className="text-sm text-zinc-600 mb-3">{rec.recommendation}</p>
+                        <p className="text-sm"><strong>Cost:</strong> {rec.cost}</p>
+                        <p className="text-sm"><strong>Timeline:</strong> {rec.timeline}</p>
+                      </div>
+                      <div>
+                        <h5 className="font-medium mb-2">Infrastructure Needs</h5>
+                        <ul className="text-sm text-zinc-600 space-y-1">
+                          {rec.infrastructure.map((item, index) => (
+                            <li key={index}>• {item}</li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div>
+                        <h5 className="font-medium mb-2">Key Benefits</h5>
+                        <ul className="text-sm text-zinc-600 space-y-1">
+                          {rec.pros.map((pro, index) => (
+                            <li key={index}>✓ {pro}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <Button className="bg-amber-600 hover:bg-amber-700">
+                        {rec.nextStep}
+                      </Button>
+                      <Button variant="outline" className="border-amber-600 text-amber-700 hover:bg-amber-50">
+                        View Detailed Guide Below
+                      </Button>
+                    </div>
+                  </>
+                )
+              })()}
+            </div>
+          )}
         </div>
 
         {/* Education Partnerships */}
