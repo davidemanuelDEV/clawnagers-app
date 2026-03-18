@@ -71,6 +71,7 @@ export default function LandingPage() {
           </div>
           <div className="hidden md:flex items-center gap-8 text-sm text-zinc-600">
             <a href="#curriculum" className="hover:text-zinc-900 transition-colors">Curriculum</a>
+            <Link href="/setup-guide" className="hover:text-zinc-900 transition-colors">Setup Guide</Link>
             <a href="#demo-day" className="hover:text-zinc-900 transition-colors">Demo Day</a>
             <a href="#pricing" className="hover:text-zinc-900 transition-colors">Pricing</a>
             <a href="#faq" className="hover:text-zinc-900 transition-colors">FAQ</a>
@@ -91,6 +92,7 @@ export default function LandingPage() {
         {mobileMenuOpen && (
           <div className="md:hidden border-t border-zinc-200 bg-white px-6 py-4 space-y-3">
             <a href="#curriculum" className="block text-sm text-zinc-600 hover:text-zinc-900">Curriculum</a>
+            <Link href="/setup-guide" className="block text-sm text-zinc-600 hover:text-zinc-900">Setup Guide</Link>
             <a href="#demo-day" className="block text-sm text-zinc-600 hover:text-zinc-900">Demo Day</a>
             <a href="#pricing" className="block text-sm text-zinc-600 hover:text-zinc-900">Pricing</a>
             <a href="#faq" className="block text-sm text-zinc-600 hover:text-zinc-900">FAQ</a>
@@ -125,6 +127,11 @@ export default function LandingPage() {
               <Button size="lg" className="bg-amber-400 hover:bg-amber-500 text-zinc-900 font-semibold text-base px-8">
                 Register Your School
                 <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+              <Button size="lg" variant="outline" className="text-base px-8">
+                <Link href="/setup-guide">
+                  Technical Setup Guide
+                </Link>
               </Button>
               <Button size="lg" variant="outline" className="text-base px-8">
                 Download Curriculum Overview
