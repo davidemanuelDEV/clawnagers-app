@@ -13,8 +13,45 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Clawnagers 🦞 | YC for High Schools",
-  description: "Teach students to build AI agents. An 8-week curriculum where students learn, build, and compete at Demo Day.",
+  title: "Clawnagers | K-12 AI Agent Building Curriculum for Schools",
+  description:
+    "8-week curriculum that teaches high school students to build real AI agents. Powered by OpenClaw. Demo Day in San Francisco. Title IV-A eligible. $899/year.",
+  metadataBase: new URL("https://clawnagers.com"),
+  alternates: {
+    canonical: "https://clawnagers.com",
+  },
+  openGraph: {
+    title: "Clawnagers | K-12 AI Agent Building Curriculum for Schools",
+    description:
+      "Your students don't just use AI. They build it. 8-week curriculum, real AI agents, Demo Day in San Francisco.",
+    url: "https://clawnagers.com",
+    siteName: "Clawnagers",
+    type: "website",
+    locale: "en_US",
+    images: [
+      {
+        url: "https://clawnagers.com/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Clawnagers - K-12 AI Agent Building Curriculum",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Clawnagers | K-12 AI Agent Building Curriculum for Schools",
+    description:
+      "Your students don't just use AI. They build it. 8-week curriculum, real AI agents, Demo Day in San Francisco.",
+    images: ["https://clawnagers.com/og-image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
 };
 
 export default function RootLayout({

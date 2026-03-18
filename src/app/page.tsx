@@ -698,18 +698,106 @@ export default function LandingPage() {
             </div>
             <div className="space-y-2">
               <p className="font-semibold text-zinc-900 text-xs uppercase tracking-wider">Resources</p>
-              <a href="#" className="block hover:text-zinc-900 transition-colors">Teacher Guide</a>
-              <a href="#" className="block hover:text-zinc-900 transition-colors">Title IV-A Info</a>
+              <a href="/teacher-guide" className="block hover:text-zinc-900 transition-colors">Teacher Guide</a>
+              <a href="/title-iv-a" className="block hover:text-zinc-900 transition-colors">Title IV-A Info</a>
               <a href="#faq" className="block hover:text-zinc-900 transition-colors">FAQ</a>
             </div>
             <div className="space-y-2">
               <p className="font-semibold text-zinc-900 text-xs uppercase tracking-wider">Legal</p>
-              <a href="#" className="block hover:text-zinc-900 transition-colors">Privacy Policy</a>
-              <a href="#" className="block hover:text-zinc-900 transition-colors">Terms of Service</a>
+              <a href="/privacy" className="block hover:text-zinc-900 transition-colors">Privacy Policy</a>
+              <a href="/terms" className="block hover:text-zinc-900 transition-colors">Terms of Service</a>
             </div>
           </div>
         </div>
       </footer>
+
+      {/* FAQPage JSON-LD Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "Do teachers need AI or coding experience?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "No. The curriculum is designed so any teacher can deliver it. The 60-minute self-paced onboarding covers everything.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Do students need coding experience?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Not for the first 4 weeks. Weeks 1-4 cover AI fundamentals through guided exercises. By week 5, students build independently.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "What is OpenClaw?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "OpenClaw is an open-source platform for building AI agents, used by a community of 114,000+ developers.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Can we use Title IV-A funds?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Yes. Clawnagers qualifies under Title IV-A as professional development and STEM curriculum.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "What data do you collect from students?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Minimal. Students log in with invite codes — no email, no PII. Since we target grades 9-12 (ages 14+), COPPA doesn't apply.",
+                },
+              },
+            ],
+          }),
+        }}
+      />
+
+      {/* Organization JSON-LD Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "EducationalOrganization",
+            name: "Clawnagers",
+            url: "https://clawnagers.com",
+            description:
+              "K-12 AI agent building curriculum powered by OpenClaw",
+            email: "hello@clawnagers.com",
+            sameAs: [],
+            offers: [
+              {
+                "@type": "Offer",
+                name: "School License",
+                price: "899",
+                priceCurrency: "USD",
+                description:
+                  "Full 8-week AI agent curriculum for one school",
+              },
+              {
+                "@type": "Offer",
+                name: "District License",
+                price: "3999",
+                priceCurrency: "USD",
+                description:
+                  "Unlimited schools in your district",
+              },
+            ],
+          }),
+        }}
+      />
     </div>
   )
 }
