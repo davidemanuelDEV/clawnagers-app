@@ -5,6 +5,8 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import Navigation from "@/components/Navigation"
+import Footer from "@/components/Footer"
 import { 
   ArrowLeft, 
   Cloud, 
@@ -66,12 +68,12 @@ export default function SetupGuidePage() {
     large: {
       title: "🏢 Multi-Class Setup",
       students: "31-100 students", 
-      recommendation: "Institutional cloud infrastructure",
+      recommendation: "Dedicated server or cloud infrastructure",
       cost: "$500-1000/month",
       infrastructure: [
-        "Dedicated cloud instances (AWS/DigitalOcean)",
+        "Mac Mini server (ideal for schools) or cloud instances",
         "Local AI models for cost efficiency",
-        "Student management dashboard",
+        "Student management dashboard", 
         "High-bandwidth network (100+ Mbps)"
       ],
       partnerships: ["All education programs", "Institutional discounts"],
@@ -99,18 +101,7 @@ export default function SetupGuidePage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
-      <div className="border-b bg-zinc-50/50">
-        <div className="max-w-6xl mx-auto px-6 py-4">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-sm text-zinc-500 hover:text-zinc-900"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Back to Home
-          </Link>
-        </div>
-      </div>
+      <Navigation />
 
       <div className="max-w-6xl mx-auto px-6 py-12">
         {/* Hero */}
@@ -382,6 +373,22 @@ export default function SetupGuidePage() {
                 </tr>
                 <tr className="border-t">
                   <td className="p-4 flex items-center gap-2">
+                    <Monitor className="w-5 h-5 text-zinc-500" />
+                    Mac Mini
+                  </td>
+                  <td className="p-4 text-center">
+                    <Badge className="bg-green-100 text-green-800">✓ Native</Badge>
+                  </td>
+                  <td className="p-4 text-center">
+                    <Badge className="bg-green-100 text-green-800">✓ Excellent performance</Badge>
+                  </td>
+                  <td className="p-4 text-center">
+                    <Badge className="bg-green-100 text-green-800">✓</Badge>
+                  </td>
+                  <td className="p-4 text-zinc-600">Ideal server setup</td>
+                </tr>
+                <tr className="border-t">
+                  <td className="p-4 flex items-center gap-2">
                     <Smartphone className="w-5 h-5 text-zinc-500" />
                     iPad/Tablet
                   </td>
@@ -403,33 +410,33 @@ export default function SetupGuidePage() {
 
         {/* Cost Calculator */}
         <section className="mb-16">
-          <h2 className="text-2xl font-bold mb-8">Cost Calculator</h2>
-          <div className="grid md:grid-cols-4 gap-6">
+          <h2 className="text-2xl font-bold mb-8">Simple Setup & Pricing</h2>
+          <div className="grid md:grid-cols-3 gap-6">
             <Card>
               <CardHeader>
                 <CardTitle className="text-lg flex items-center gap-2">
-                  <GraduationCap className="w-5 h-5 text-blue-500" />
-                  Learning Setup
+                  <GraduationCap className="w-5 h-5 text-green-500" />
+                  Free Start
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-3 text-sm">
                   <div className="flex justify-between">
-                    <span>Students:</span>
-                    <span className="font-medium">1-30</span>
+                    <span>Curriculum:</span>
+                    <span className="font-medium">Free resources</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>Hardware:</span>
-                    <span className="font-medium">Any device</span>
+                    <span>Platform:</span>
+                    <span className="font-medium">Use existing devices</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>AI:</span>
-                    <span className="font-medium">Cloud APIs</span>
+                    <span>Support:</span>
+                    <span className="font-medium">Community forums</span>
                   </div>
                 </div>
                 <div className="mt-4 pt-4 border-t">
-                  <div className="text-2xl font-bold text-green-600">$0-50</div>
-                  <div className="text-sm text-zinc-500">per month</div>
+                  <div className="text-2xl font-bold text-green-600">$0</div>
+                  <div className="text-sm text-zinc-500">Get started, upgrade when ready</div>
                 </div>
               </CardContent>
             </Card>
@@ -438,30 +445,30 @@ export default function SetupGuidePage() {
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <CardTitle className="text-lg flex items-center gap-2">
-                    <Cloud className="w-5 h-5 text-amber-500" />
-                    Recommended
+                    <Monitor className="w-5 h-5 text-amber-500" />
+                    School License
                   </CardTitle>
-                  <Badge className="bg-amber-200 text-amber-800">POPULAR</Badge>
+                  <Badge className="bg-amber-200 text-amber-800">RECOMMENDED</Badge>
                 </div>
               </CardHeader>
               <CardContent>
                 <div className="space-y-3 text-sm">
                   <div className="flex justify-between">
-                    <span>Students:</span>
-                    <span className="font-medium">30-100</span>
+                    <span>Full Curriculum:</span>
+                    <span className="font-medium">8 weeks + support</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>Hardware:</span>
-                    <span className="font-medium">Cloud GPU</span>
+                    <span>Teacher Dashboard:</span>
+                    <span className="font-medium">Progress tracking</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>AI:</span>
-                    <span className="font-medium">Local + Cloud</span>
+                    <span>Demo Day:</span>
+                    <span className="font-medium">SF competition entry</span>
                   </div>
                 </div>
                 <div className="mt-4 pt-4 border-t">
-                  <div className="text-2xl font-bold text-amber-600">$200-500</div>
-                  <div className="text-sm text-zinc-500">per month</div>
+                  <div className="text-2xl font-bold text-amber-600">$899</div>
+                  <div className="text-sm text-zinc-500">per year (~$75/month)</div>
                 </div>
               </CardContent>
             </Card>
@@ -469,60 +476,44 @@ export default function SetupGuidePage() {
             <Card>
               <CardHeader>
                 <CardTitle className="text-lg flex items-center gap-2">
-                  <Cpu className="w-5 h-5 text-purple-500" />
-                  Production
+                  <Users className="w-5 h-5 text-blue-500" />
+                  District License
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-3 text-sm">
                   <div className="flex justify-between">
-                    <span>Students:</span>
-                    <span className="font-medium">100-300</span>
+                    <span>Multiple Schools:</span>
+                    <span className="font-medium">Unlimited access</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>Hardware:</span>
-                    <span className="font-medium">GPU Cluster</span>
+                    <span>Admin Dashboard:</span>
+                    <span className="font-medium">District-wide view</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>AI:</span>
-                    <span className="font-medium">Local models</span>
+                    <span>Premium Support:</span>
+                    <span className="font-medium">Direct line to team</span>
                   </div>
                 </div>
                 <div className="mt-4 pt-4 border-t">
-                  <div className="text-2xl font-bold text-purple-600">$1000+</div>
-                  <div className="text-sm text-zinc-500">per month</div>
+                  <div className="text-2xl font-bold text-blue-600">$3,999</div>
+                  <div className="text-sm text-zinc-500">per year (volume discount)</div>
                 </div>
               </CardContent>
             </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg flex items-center gap-2">
-                  <HardDrive className="w-5 h-5 text-zinc-500" />
-                  Enterprise
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3 text-sm">
-                  <div className="flex justify-between">
-                    <span>Students:</span>
-                    <span className="font-medium">500+</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Hardware:</span>
-                    <span className="font-medium">On-premise</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>AI:</span>
-                    <span className="font-medium">Private cloud</span>
-                  </div>
-                </div>
-                <div className="mt-4 pt-4 border-t">
-                  <div className="text-2xl font-bold text-zinc-600">Custom</div>
-                  <div className="text-sm text-zinc-500">Contact us</div>
-                </div>
-              </CardContent>
-            </Card>
+          </div>
+          
+          <div className="mt-8 p-6 bg-green-50 rounded-lg border border-green-200">
+            <div className="flex items-start gap-3">
+              <CheckCircle className="w-6 h-6 text-green-600 mt-0.5" />
+              <div>
+                <h3 className="font-semibold text-green-800 mb-2">Most Schools Start for $0</h3>
+                <p className="text-green-700 text-sm">
+                  Begin with free resources and existing classroom devices. Upgrade to full curriculum when you're ready to deploy. 
+                  Many schools use Title IV-A funding for the annual license.
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -679,6 +670,13 @@ export default function SetupGuidePage() {
                   </Link>
                 </Button>
               </div>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mt-4">
+                <Link href="/ai-models">
+                  <Button variant="outline" size="lg">
+                    View AI Models & Pricing
+                  </Button>
+                </Link>
+              </div>
               <p className="text-sm text-zinc-500 mt-4">
                 Questions? Email education@clawnagers.com
               </p>
@@ -686,6 +684,8 @@ export default function SetupGuidePage() {
           </Card>
         </section>
       </div>
+      
+      <Footer />
     </div>
   )
 }

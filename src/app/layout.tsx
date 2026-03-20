@@ -20,6 +20,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://clawnagers.com",
   },
+  icons: {
+    icon: "/bot-favicon.svg",
+    shortcut: "/bot-favicon.svg",
+    apple: "/bot-favicon.svg",
+  },
   openGraph: {
     title: "Clawnagers | K-12 AI Agent Building Curriculum for Schools",
     description:

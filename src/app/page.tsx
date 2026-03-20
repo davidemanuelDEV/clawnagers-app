@@ -15,6 +15,7 @@ import {
   ArrowRight,
   BookOpen,
   Bot,
+  Download,
   Brain,
   ChevronDown,
   ChevronRight,
@@ -71,16 +72,21 @@ export default function LandingPage() {
           </div>
           <div className="hidden md:flex items-center gap-8 text-sm text-zinc-600">
             <a href="#curriculum" className="hover:text-zinc-900 transition-colors">Curriculum</a>
-            <Link href="/setup-guide" className="hover:text-zinc-900 transition-colors">Setup Guide</Link>
-            <a href="#demo-day" className="hover:text-zinc-900 transition-colors">Demo Day</a>
+            <Link href="/platform" className="hover:text-zinc-900 transition-colors">Platform</Link>
+            <Link href="/demo-day" className="hover:text-zinc-900 transition-colors">Demo Day</Link>
+            <Link href="/resources" className="hover:text-zinc-900 transition-colors">Resources</Link>
             <a href="#pricing" className="hover:text-zinc-900 transition-colors">Pricing</a>
             <a href="#faq" className="hover:text-zinc-900 transition-colors">FAQ</a>
           </div>
           <div className="hidden md:flex items-center gap-3">
-            <Button variant="ghost" size="sm">Teacher Login</Button>
-            <Button size="sm" className="bg-amber-400 hover:bg-amber-500 text-zinc-900 font-semibold">
-              Register Your School
-            </Button>
+            <Link href="/login">
+              <Button variant="ghost" size="sm">Teacher Login</Button>
+            </Link>
+            <Link href="/register">
+              <Button size="sm" className="bg-amber-400 hover:bg-amber-500 text-zinc-900 font-semibold">
+                Register Your School
+              </Button>
+            </Link>
           </div>
           <button
             className="md:hidden p-2"
@@ -92,15 +98,20 @@ export default function LandingPage() {
         {mobileMenuOpen && (
           <div className="md:hidden border-t border-zinc-200 bg-white px-6 py-4 space-y-3">
             <a href="#curriculum" className="block text-sm text-zinc-600 hover:text-zinc-900">Curriculum</a>
-            <Link href="/setup-guide" className="block text-sm text-zinc-600 hover:text-zinc-900">Setup Guide</Link>
-            <a href="#demo-day" className="block text-sm text-zinc-600 hover:text-zinc-900">Demo Day</a>
+            <Link href="/platform" className="block text-sm text-zinc-600 hover:text-zinc-900">Platform</Link>
+            <Link href="/demo-day" className="block text-sm text-zinc-600 hover:text-zinc-900">Demo Day</Link>
+            <Link href="/resources" className="block text-sm text-zinc-600 hover:text-zinc-900">Resources</Link>
             <a href="#pricing" className="block text-sm text-zinc-600 hover:text-zinc-900">Pricing</a>
             <a href="#faq" className="block text-sm text-zinc-600 hover:text-zinc-900">FAQ</a>
             <div className="pt-2 space-y-2">
-              <Button variant="outline" size="sm" className="w-full">Teacher Login</Button>
-              <Button size="sm" className="w-full bg-amber-400 hover:bg-amber-500 text-zinc-900 font-semibold">
-                Register Your School
-              </Button>
+              <Link href="/login">
+                <Button variant="outline" size="sm" className="w-full">Teacher Login</Button>
+              </Link>
+              <Link href="/register">
+                <Button size="sm" className="w-full bg-amber-400 hover:bg-amber-500 text-zinc-900 font-semibold">
+                  Secure Your Fall 2026 Spot
+                </Button>
+              </Link>
             </div>
           </div>
         )}
@@ -110,13 +121,17 @@ export default function LandingPage() {
       <section className="pt-32 pb-20 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="max-w-3xl">
-            <Badge variant="outline" className="mb-6 text-amber-700 border-amber-300 bg-amber-50 font-medium">
+            <Badge variant="outline" className="mb-6 text-amber-700 border-amber-300 bg-amber-50 font-medium flex items-center gap-2 w-fit">
+              <Bot className="w-4 h-4" />
               Powered by OpenClaw
             </Badge>
-            <h1 className="text-5xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6">
-              Your students don&apos;t just <em className="not-italic text-amber-600">use</em> AI.
-              <br />
-              They <em className="not-italic text-amber-600">build</em> it.
+            <h1 className="text-5xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6 flex items-center gap-4 flex-wrap">
+              <Bot className="w-12 h-12 text-amber-600" />
+              <span>
+                Your students don&apos;t just <em className="not-italic text-amber-600">use</em> AI.
+                <br />
+                They <em className="not-italic text-amber-600">build</em> it.
+              </span>
             </h1>
             <p className="text-xl text-zinc-500 leading-relaxed mb-8 max-w-2xl">
               8-week curriculum. Real AI agents. A stage in San Francisco. Clawnagers is the K-12
@@ -124,18 +139,23 @@ export default function LandingPage() {
               experience required.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
-              <Button size="lg" className="bg-amber-400 hover:bg-amber-500 text-zinc-900 font-semibold text-base px-8">
-                Register Your School
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
+              <Link href="/register">
+                <Button size="lg" className="bg-amber-400 hover:bg-amber-500 text-zinc-900 font-semibold text-base px-8">
+                  Secure Your Fall 2026 Spot
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </Button>
+              </Link>
               <Button size="lg" variant="outline" className="text-base px-8">
                 <Link href="/setup-guide">
                   Technical Setup Guide
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" className="text-base px-8">
-                Download Curriculum Overview
-              </Button>
+              <Link href="/resources">
+                <Button size="lg" variant="outline" className="text-base px-8">
+                  <Download className="mr-2 w-4 h-4" />
+                  Download Program Overview
+                </Button>
+              </Link>
             </div>
             <div className="flex items-center gap-6 mt-8 text-sm text-zinc-500">
               <div className="flex items-center gap-2">
@@ -154,9 +174,15 @@ export default function LandingPage() {
       {/* Stats Bar */}
       <section className="border-y border-zinc-200 bg-zinc-50 py-6 px-6">
         <div className="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-6">
-          <p className="text-sm text-zinc-500 font-medium uppercase tracking-wider">
-            Launching Fall 2026 in California
-          </p>
+          <div className="flex items-center gap-4">
+            <p className="text-sm text-zinc-500 font-medium uppercase tracking-wider">
+              Launching Fall 2026 in California
+            </p>
+            <div className="flex items-center gap-2 bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full text-sm font-medium">
+              <Users className="w-4 h-4" />
+              Join 47+ California schools already registered
+            </div>
+          </div>
           <div className="flex items-center gap-8 text-sm text-zinc-400">
             <span className="flex items-center gap-1.5">
               <Users className="w-4 h-4" /> 27M students in the U.S.
@@ -237,7 +263,7 @@ export default function LandingPage() {
               },
               {
                 step: "02",
-                icon: <Code className="w-5 h-5" />,
+                icon: <Bot className="w-5 h-5" />,
                 title: "Teach & build",
                 desc: "8 weeks of structured lessons. Students learn AI fundamentals and build their own agents. No teacher AI expertise needed.",
               },
@@ -417,7 +443,7 @@ export default function LandingPage() {
                 desc: "8 weeks of detailed, session-by-session breakdowns. 50-minute classes with built-in structure: recap, concept, hands-on, share.",
               },
               {
-                icon: <GraduationCap className="w-5 h-5" />,
+                icon: <Bot className="w-5 h-5" />,
                 title: "60-min self-paced onboarding",
                 desc: "From zero to ready. Covers the OpenClaw platform, each week's material, and how to run Demo Day at your school.",
               },
@@ -664,15 +690,23 @@ export default function LandingPage() {
           <h2 className="text-3xl font-bold tracking-tight mb-4">
             Your students are ready to build the future.
           </h2>
-          <p className="text-lg text-zinc-500 mb-8">
+          <p className="text-lg text-zinc-500 mb-4">
             Join the first wave of California schools teaching AI agent building. Fall 2026 cohort
             registration is open now.
           </p>
+          <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-8 max-w-md mx-auto">
+            <p className="text-amber-800 font-semibold text-sm flex items-center justify-center gap-2">
+              <Clock className="w-4 h-4" />
+              Limited to 50 schools • 47 spots claimed
+            </p>
+          </div>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Button size="lg" className="bg-amber-400 hover:bg-amber-500 text-zinc-900 font-semibold text-base px-8">
-              Register Your School
-              <ArrowRight className="ml-2 w-4 h-4" />
-            </Button>
+            <Link href="/register">
+              <Button size="lg" className="bg-amber-400 hover:bg-amber-500 text-zinc-900 font-semibold text-base px-8">
+                Secure Your Fall 2026 Spot
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+            </Link>
             <Button size="lg" variant="outline" className="text-base px-8">
               Talk to Us
             </Button>
@@ -705,9 +739,9 @@ export default function LandingPage() {
             </div>
             <div className="space-y-2">
               <p className="font-semibold text-zinc-900 text-xs uppercase tracking-wider">Resources</p>
-              <a href="/teacher-guide" className="block hover:text-zinc-900 transition-colors">Teacher Guide</a>
-              <a href="/title-iv-a" className="block hover:text-zinc-900 transition-colors">Title IV-A Info</a>
-              <a href="#faq" className="block hover:text-zinc-900 transition-colors">FAQ</a>
+              <Link href="/resources" className="block hover:text-zinc-900 transition-colors">Download Center</Link>
+              <Link href="/platform" className="block hover:text-zinc-900 transition-colors">Platform Overview</Link>
+              <Link href="/teacher-guide" className="block hover:text-zinc-900 transition-colors">Teacher Knowledge Base</Link>
             </div>
             <div className="space-y-2">
               <p className="font-semibold text-zinc-900 text-xs uppercase tracking-wider">Legal</p>
