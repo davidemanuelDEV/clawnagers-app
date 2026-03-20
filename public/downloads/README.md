@@ -2,23 +2,38 @@
 
 This directory contains the downloadable PDF and other assets for the Clawnagers website.
 
-## File Structure:
+## Available Files:
+
+### 🎯 Core Resources (Public)
 - `Clawnagers-Curriculum-Overview.pdf` - Main curriculum overview (3 pages)
-- `Clawnagers-Sample-Lesson-Week1.pdf` - Week 1 lesson plan sample
-- `Clawnagers-Technical-Requirements.pdf` - IT requirements and setup
-- `Clawnagers-Teacher-Onboarding.pdf` - Complete teacher guide (gated)
-- `Clawnagers-Title-IV-A-Guide.pdf` - Funding and compliance guide (gated)
+- `Clawnagers-Sample-Lesson-Week1.pdf` - Complete Week 1 lesson plan with activities ✅
+- `Clawnagers-Technical-Requirements.pdf` - Hardware, software & network requirements ✅
 
-## To Create PDFs:
-1. Use the content in `/clawnagers/downloads/` as source material
-2. Design in Canva, Figma, or similar tool using Clawnagers branding
-3. Export as high-quality PDFs
-4. Place in this `/public/downloads/` directory
-5. Update download links in the resources page
+### 💎 Premium Lead Magnets (Gated)
+- `Clawnagers-ROI-Calculator-Pricing-Guide.pdf` - Interactive ROI calculator with funding sources ✅
+- `Clawnagers-Title-IV-A-Eligibility-Guide.pdf` - Federal funding justification guide ✅
+- `Clawnagers-Implementation-Timeline.pdf` - 30/60/90-day rollout plan ✅
 
-## Design Guidelines:
-- Use Clawnagers brand colors (amber/orange theme)
-- Include contact info (david@clawnagers.com)
-- Add QR code linking to clawnagers.com
-- Professional education-focused layout
-- Clear typography for readability
+## File Status:
+✅ = Created and ready for use
+📝 = Needs creation
+🔄 = Needs updating
+
+## Design Features:
+- Consistent Clawnagers branding (amber/orange color scheme)
+- Professional education-focused layouts
+- Contact information and CTAs included
+- Mobile-responsive design elements
+- Clear typography for accessibility
+
+## Technical Details:
+- All PDFs generated via Puppeteer from styled HTML
+- A4 format with proper margins
+- Print backgrounds enabled for visual consistency
+- Average file size: 300-500KB each
+
+## Usage Notes:
+- Core resources are freely downloadable from the website
+- Premium lead magnets require email capture for access
+- All files include contact information for follow-up
+- Professional quality suitable for school board presentations

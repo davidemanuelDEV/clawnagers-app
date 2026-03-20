@@ -120,51 +120,123 @@ export default function LandingPage() {
       {/* Hero */}
       <section className="pt-32 pb-20 px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="max-w-3xl">
-            <Badge variant="outline" className="mb-6 text-amber-700 border-amber-300 bg-amber-50 font-medium flex items-center gap-2 w-fit">
-              <Bot className="w-4 h-4" />
-              Powered by OpenClaw
-            </Badge>
-            <h1 className="text-5xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6 flex items-center gap-4 flex-wrap">
-              <Bot className="w-12 h-12 text-amber-600" />
-              <span>
-                Your students don&apos;t just <em className="not-italic text-amber-600">use</em> AI.
-                <br />
-                They <em className="not-italic text-amber-600">build</em> it.
-              </span>
-            </h1>
-            <p className="text-xl text-zinc-500 leading-relaxed mb-8 max-w-2xl">
-              8-week curriculum. Real AI agents. A stage in San Francisco. Clawnagers is the K-12
-              program that teaches students to build autonomous AI agents — no prior coding
-              experience required.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Link href="/register">
-                <Button size="lg" className="bg-amber-400 hover:bg-amber-500 text-zinc-900 font-semibold text-base px-8">
-                  Secure Your Fall 2026 Spot
-                  <ArrowRight className="ml-2 w-4 h-4" />
-                </Button>
-              </Link>
-              <Button size="lg" variant="outline" className="text-base px-8">
-                <Link href="/setup-guide">
-                  Technical Setup Guide
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Column - Content */}
+            <div>
+              <Badge variant="outline" className="mb-6 text-amber-700 border-amber-300 bg-amber-50 font-medium flex items-center gap-2 w-fit">
+                <Bot className="w-4 h-4" />
+                Powered by OpenClaw
+              </Badge>
+              <h1 className="text-5xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6 flex items-center gap-4 flex-wrap">
+                <Bot className="w-12 h-12 text-amber-600" />
+                <span>
+                  Your students don&apos;t just <em className="not-italic text-amber-600">use</em> AI.
+                  <br />
+                  They <em className="not-italic text-amber-600">build</em> it.
+                </span>
+              </h1>
+              <p className="text-xl text-zinc-500 leading-relaxed mb-8">
+                8-week curriculum. Real AI agents. A stage in San Francisco. Clawnagers is the K-12
+                program that teaches students to build autonomous AI agents — no prior coding
+                experience required.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 mb-8">
+                <Link href="/register">
+                  <Button size="lg" className="bg-amber-400 hover:bg-amber-500 text-zinc-900 font-semibold text-base px-8">
+                    Secure Your Fall 2026 Spot
+                    <ArrowRight className="ml-2 w-4 h-4" />
+                  </Button>
                 </Link>
-              </Button>
-              <Link href="/resources">
-                <Button size="lg" variant="outline" className="text-base px-8">
-                  <Download className="mr-2 w-4 h-4" />
-                  Download Program Overview
-                </Button>
-              </Link>
-            </div>
-            <div className="flex items-center gap-6 mt-8 text-sm text-zinc-500">
-              <div className="flex items-center gap-2">
-                <CircleCheck className="w-4 h-4 text-emerald-500" />
-                No AI expertise needed to teach
+                <Link href="/resources">
+                  <Button size="lg" variant="outline" className="text-base px-8">
+                    <Download className="mr-2 w-4 h-4" />
+                    Program Overview
+                  </Button>
+                </Link>
               </div>
-              <div className="flex items-center gap-2">
-                <CircleCheck className="w-4 h-4 text-emerald-500" />
-                Title IV-A eligible
+              <div className="flex items-center gap-6 text-sm text-zinc-500">
+                <div className="flex items-center gap-2">
+                  <CircleCheck className="w-4 h-4 text-emerald-500" />
+                  No AI expertise needed to teach
+                </div>
+                <div className="flex items-center gap-2">
+                  <CircleCheck className="w-4 h-4 text-emerald-500" />
+                  Title IV-A eligible
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column - Student Interface Mockup */}
+            <div className="relative">
+              <div className="bg-white rounded-2xl shadow-2xl border border-zinc-200 overflow-hidden">
+                {/* Browser Chrome */}
+                <div className="bg-zinc-100 px-4 py-3 border-b border-zinc-200">
+                  <div className="flex items-center gap-2">
+                    <div className="flex gap-2">
+                      <div className="w-3 h-3 bg-red-400 rounded-full"></div>
+                      <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
+                      <div className="w-3 h-3 bg-green-400 rounded-full"></div>
+                    </div>
+                    <div className="ml-4 bg-white rounded-md px-3 py-1 text-xs text-zinc-500 font-mono">
+                      student.clawnagers.com/week-5
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Student Interface */}
+                <div className="p-6 bg-gradient-to-br from-amber-50 to-orange-50">
+                  <div className="mb-4">
+                    <h3 className="text-lg font-bold text-zinc-900 mb-1">Build Your AI Agent</h3>
+                    <p className="text-sm text-zinc-600">Week 5: Real-World Connections</p>
+                  </div>
+                  
+                  {/* Agent Preview */}
+                  <div className="bg-white rounded-lg border border-amber-200 p-4 mb-4">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-10 h-10 bg-amber-400 rounded-full flex items-center justify-center">
+                        <Bot className="w-6 h-6 text-white" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-zinc-900">StudyBot</p>
+                        <p className="text-xs text-zinc-500">by Alex Chen</p>
+                      </div>
+                    </div>
+                    <p className="text-sm text-zinc-700 mb-3">
+                      "Hey! I'm StudyBot. I help students manage their homework and find study resources. Ask me anything!"
+                    </p>
+                    <div className="flex gap-2">
+                      <Badge variant="outline" className="text-xs">Discord Ready</Badge>
+                      <Badge variant="outline" className="text-xs">Web Search</Badge>
+                    </div>
+                  </div>
+                  
+                  {/* Code Editor Preview */}
+                  <div className="bg-zinc-900 rounded-lg p-4 mb-4">
+                    <div className="text-xs font-mono text-green-400 mb-2"># Your agent skills:</div>
+                    <div className="text-xs font-mono text-zinc-300 space-y-1">
+                      <div><span className="text-blue-400">@agent</span>.skill(<span className="text-amber-300">"homework_help"</span>)</div>
+                      <div><span className="text-blue-400">@agent</span>.skill(<span className="text-amber-300">"web_search"</span>)</div>
+                      <div><span className="text-blue-400">@agent</span>.skill(<span className="text-amber-300">"discord_bot"</span>)</div>
+                    </div>
+                  </div>
+                  
+                  {/* Action Buttons */}
+                  <div className="flex gap-2">
+                    <Button size="sm" className="bg-amber-400 hover:bg-amber-500 text-zinc-900 text-xs">
+                      <Rocket className="w-3 h-3 mr-1" />
+                      Test Agent
+                    </Button>
+                    <Button size="sm" variant="outline" className="text-xs">
+                      <Code className="w-3 h-3 mr-1" />
+                      View Code
+                    </Button>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Floating Success Badge */}
+              <div className="absolute -top-4 -right-4 bg-emerald-500 text-white px-3 py-2 rounded-full text-sm font-semibold shadow-lg">
+                Demo Day Ready! 🎉
               </div>
             </div>
           </div>
@@ -193,6 +265,49 @@ export default function LandingPage() {
             <span className="flex items-center gap-1.5">
               <BookOpen className="w-4 h-4" /> State AI mandates accelerating
             </span>
+          </div>
+        </div>
+      </section>
+
+      {/* Teacher Support */}
+      <section className="py-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="max-w-2xl mb-12">
+            <p className="text-sm font-semibold text-amber-600 uppercase tracking-wider mb-3">
+              For teachers
+            </p>
+            <h2 className="text-3xl font-bold tracking-tight mb-4">
+              You don&apos;t need to know AI. We built this so you don&apos;t have to.
+            </h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                icon: <BookOpen className="w-5 h-5" />,
+                title: "Complete lesson plans",
+                desc: "8 weeks of detailed, session-by-session breakdowns. 50-minute classes with built-in structure: recap, concept, hands-on, share.",
+              },
+              {
+                icon: <Bot className="w-5 h-5" />,
+                title: "60-min self-paced onboarding",
+                desc: "From zero to ready. Covers the OpenClaw platform, each week's material, and how to run Demo Day at your school.",
+              },
+              {
+                icon: <Users className="w-5 h-5" />,
+                title: "Dashboard + progress tracking",
+                desc: "See which students are on track, who needs help, and where each class stands in the curriculum. One view, no spreadsheets.",
+              },
+            ].map((item) => (
+              <Card key={item.title} className="border-zinc-200">
+                <CardContent className="pt-6">
+                  <div className="w-10 h-10 rounded-lg bg-amber-50 flex items-center justify-center text-amber-600 mb-4">
+                    {item.icon}
+                  </div>
+                  <h3 className="font-semibold mb-2">{item.title}</h3>
+                  <p className="text-sm text-zinc-500 leading-relaxed">{item.desc}</p>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
@@ -424,48 +539,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Teacher Support */}
-      <section className="py-20 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="max-w-2xl mb-12">
-            <p className="text-sm font-semibold text-amber-600 uppercase tracking-wider mb-3">
-              For teachers
-            </p>
-            <h2 className="text-3xl font-bold tracking-tight mb-4">
-              You don&apos;t need to know AI. We built this so you don&apos;t have to.
-            </h2>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                icon: <BookOpen className="w-5 h-5" />,
-                title: "Complete lesson plans",
-                desc: "8 weeks of detailed, session-by-session breakdowns. 50-minute classes with built-in structure: recap, concept, hands-on, share.",
-              },
-              {
-                icon: <Bot className="w-5 h-5" />,
-                title: "60-min self-paced onboarding",
-                desc: "From zero to ready. Covers the OpenClaw platform, each week's material, and how to run Demo Day at your school.",
-              },
-              {
-                icon: <Users className="w-5 h-5" />,
-                title: "Dashboard + progress tracking",
-                desc: "See which students are on track, who needs help, and where each class stands in the curriculum. One view, no spreadsheets.",
-              },
-            ].map((item) => (
-              <Card key={item.title} className="border-zinc-200">
-                <CardContent className="pt-6">
-                  <div className="w-10 h-10 rounded-lg bg-amber-50 flex items-center justify-center text-amber-600 mb-4">
-                    {item.icon}
-                  </div>
-                  <h3 className="font-semibold mb-2">{item.title}</h3>
-                  <p className="text-sm text-zinc-500 leading-relaxed">{item.desc}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       {/* Pricing */}
       <section id="pricing" className="py-20 px-6 bg-zinc-50 border-y border-zinc-200">
@@ -734,7 +808,7 @@ export default function LandingPage() {
             <div className="space-y-2">
               <p className="font-semibold text-zinc-900 text-xs uppercase tracking-wider">Program</p>
               <a href="#curriculum" className="block hover:text-zinc-900 transition-colors">Curriculum</a>
-              <a href="#demo-day" className="block hover:text-zinc-900 transition-colors">Demo Day</a>
+              <Link href="/demo-day" className="block hover:text-zinc-900 transition-colors">Demo Day</Link>
               <a href="#pricing" className="block hover:text-zinc-900 transition-colors">Pricing</a>
             </div>
             <div className="space-y-2">
